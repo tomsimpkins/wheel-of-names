@@ -58,7 +58,7 @@
 	border-radius: 10px 10px 0 0;
 	background: #2a2a2a;
 	color: #f2f2f2;
-	font: 600 14px/1.2 "Trebuchet MS", Arial, sans-serif;
+	font: 600 14px / 1.2 "Trebuchet MS", Arial, sans-serif;
 	cursor: pointer;
 }
 
@@ -94,7 +94,7 @@
 	border-radius: 8px;
 	background: #2a2a2a;
 	color: #f2f2f2;
-	font: 600 13px/1.2 "Trebuchet MS", Arial, sans-serif;
+	font: 600 13px / 1.2 "Trebuchet MS", Arial, sans-serif;
 	padding: 0.45rem 0.6rem;
 	cursor: pointer;
 }
@@ -105,7 +105,7 @@
 	padding: 0.75rem;
 	border: 1px solid #333;
 	border-radius: 8px;
-	font: 500 14px/1.4 "Trebuchet MS", Arial, sans-serif;
+	font: 500 14px / 1.4 "Trebuchet MS", Arial, sans-serif;
 	color: #f2f2f2;
 	background: #151515;
 	flex: 1;
@@ -129,7 +129,7 @@
 }
 
 .column-right label {
-	font: 600 14px/1.2 "Trebuchet MS", Arial, sans-serif;
+	font: 600 14px / 1.2 "Trebuchet MS", Arial, sans-serif;
 	color: #f2f2f2;
 	margin-bottom: 0.5rem;
 }

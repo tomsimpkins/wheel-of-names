@@ -40,7 +40,9 @@ export function NamesPanel(props: NamesPanelProps) {
 					<textarea
 						id="names"
 						value={props.namesText}
-						onInput={(event) => props.onNamesTextChange(event.currentTarget.value)}
+						onInput={(event) =>
+							props.onNamesTextChange(event.currentTarget.value)
+						}
 						rows={16}
 					/>
 				</div>

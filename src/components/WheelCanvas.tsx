@@ -74,7 +74,8 @@ export function WheelCanvas(props: WheelCanvasProps) {
 	const indexFromAngle = (currentAngle: number, length: number) => {
 		const twoPi = Math.PI * 2;
 		const slice = twoPi / length;
-		const normalized = ((1.5 * Math.PI - currentAngle) % twoPi + twoPi) % twoPi;
+		const normalized =
+			(((1.5 * Math.PI - currentAngle) % twoPi) + twoPi) % twoPi;
 		return Math.floor(normalized / slice) % length;
 	};
 
@@ -89,7 +90,8 @@ export function WheelCanvas(props: WheelCanvasProps) {
 		}
 		const index = indexFromAngle(angle, list.length);
 		const forceLast = props.forceLastIncludes ?? null;
-		const canAvoid = !!forceLast && list.some((name) => !includesForce(name, forceLast));
+		const canAvoid =
+			!!forceLast && list.some((name) => !includesForce(name, forceLast));
 		let selected = list[index];
 		if (forceLast && canAvoid && includesForce(selected, forceLast)) {
 			for (let offset = 1; offset < list.length; offset += 1) {
@@ -110,11 +112,14 @@ export function WheelCanvas(props: WheelCanvasProps) {
 		const startAngle = angle;
 		const duration = 3000 + Math.random() * 1500;
 		const rotations = 6 + Math.random() * 3;
-		let targetAngle = startAngle + rotations * Math.PI * 2 + Math.random() * Math.PI * 2;
+		let targetAngle =
+			startAngle + rotations * Math.PI * 2 + Math.random() * Math.PI * 2;
 		const list = props.names;
 		const forceLast = props.forceLastIncludes ?? null;
 		const canAvoid =
-			!!forceLast && list.length > 0 && list.some((name) => !includesForce(name, forceLast));
+			!!forceLast &&
+			list.length > 0 &&
+			list.some((name) => !includesForce(name, forceLast));
 		if (list.length > 0 && forceLast && canAvoid) {
 			const index = indexFromAngle(targetAngle, list.length);
 			const selected = list[index];
@@ -126,8 +131,10 @@ export function WheelCanvas(props: WheelCanvasProps) {
 						const slice = (Math.PI * 2) / list.length;
 						const normalizedTarget = (candidateIndex + 0.5) * slice;
 						const desired = 1.5 * Math.PI - normalizedTarget;
-						const currentNormalized = ((targetAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
-						const desiredNormalized = ((desired % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+						const currentNormalized =
+							((targetAngle % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+						const desiredNormalized =
+							((desired % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
 						targetAngle += desiredNormalized - currentNormalized;
 						break;
 					}

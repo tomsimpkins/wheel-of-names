@@ -1,4 +1,4 @@
-import { createMemo, createSignal } from "solid-js";
+import { createMemo, createSignal, Show } from "solid-js";
 import "./App.css";
 import { NamesPanel } from "./components/NamesPanel";
 import { WheelCanvas } from "./components/WheelCanvas";
@@ -34,6 +34,8 @@ function App() {
 		return color ? getContrastText(color) : "#fff";
 	});
 
+	const winner = createMemo(() => modalWinner());
+
 	return (
 		<div class="layout">
 			<div />
@@ -59,23 +61,25 @@ function App() {
 				}}
 				onClearNames={() => setNamesText("")}
 			/>
-			{modalWinner() && (
-				<WinnerModal
-					winner={modalWinner()}
-					headerColor={winnerColor() ?? "#111"}
-					headerTextColor={winnerTextColor()}
-					onRemove={() => {
-						const winner = modalWinner();
-						if (!winner) return;
-						const updated = names()
-							.filter((name) => name !== winner)
-							.join("\n");
-						setNamesText(updated);
-						setModalWinner(null);
-					}}
-					onClose={() => setModalWinner(null)}
-				/>
-			)}
+			<Show when={winner()}>
+				{(innerWinner) => (
+					<WinnerModal
+						winner={innerWinner()}
+						headerColor={winnerColor() ?? "#111"}
+						headerTextColor={winnerTextColor()}
+						onRemove={() => {
+							const currentWinner = innerWinner();
+							if (!currentWinner) return;
+							const updated = names()
+								.filter((name) => name !== currentWinner)
+								.join("\n");
+							setNamesText(updated);
+							setModalWinner(null);
+						}}
+						onClose={() => setModalWinner(null)}
+					/>
+				)}
+			</Show>
 		</div>
 	);
 }
