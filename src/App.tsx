@@ -6,9 +6,7 @@ import { WinnerModal } from "./components/WinnerModal";
 import { getContrastText, wheelColors } from "./utils/colors";
 
 function App() {
-	const [namesText, setNamesText] = createSignal(
-		"Ada\nLinus\nGrace\nKen\nMargaret\nDonald\nBarbara\nAlan",
-	);
+	const [namesText, setNamesText] = createSignal("Romeo\nJuliet");
 	const [modalWinner, setModalWinner] = createSignal<string | null>(null);
 	const [tab, setTab] = createSignal<"entries" | "results">("entries");
 	const [results, setResults] = createSignal<string[]>([]);
