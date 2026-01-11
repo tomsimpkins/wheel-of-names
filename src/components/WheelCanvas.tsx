@@ -17,8 +17,9 @@ export function WheelCanvas(props: WheelCanvasProps) {
 	let rafId = 0;
 
 	const drawWheel = (ctx: CanvasRenderingContext2D, size: number) => {
-		const radius = size / 2 - 10;
-		const center = size / 2;
+		const wheelCenterOffset = 8;
+		const radius = size / 2 - 10 - wheelCenterOffset;
+		const center = size / 2 + wheelCenterOffset;
 		const list = props.names;
 		if (list.length === 0) {
 			ctx.clearRect(0, 0, size, size);
@@ -62,13 +63,30 @@ export function WheelCanvas(props: WheelCanvasProps) {
 		ctx.arc(center, center, radius * 0.18, 0, Math.PI * 2);
 		ctx.fill();
 
-		ctx.fillStyle = "#111";
+		const pointerIndex = list.length > 0 ? indexFromAngle(angle, list.length) : 0;
+		const pointerColor = list.length > 0 ? colors[pointerIndex % colors.length] : "#111";
+		const pointerStroke = getContrastText(pointerColor);
+		const pointerHeight = 22;
+		const pointerBaseHalfWidth = 13;
+		const pointerNeckHalfWidth = 7;
+		const pointerNotchDepth = 4;
+		const wheelTop = center - radius;
+		const pointerTop = Math.max(2, wheelTop - pointerHeight * 1.1) + pointerHeight * 0.4;
+		const pointerBottom = pointerTop + pointerHeight;
+		const pointerNeck = pointerTop + pointerHeight * 0.45;
 		ctx.beginPath();
-		ctx.moveTo(center, 10);
-		ctx.lineTo(center - 12, 40);
-		ctx.lineTo(center + 12, 40);
+		ctx.moveTo(center - pointerBaseHalfWidth, pointerTop);
+		ctx.lineTo(center, pointerTop + pointerNotchDepth);
+		ctx.lineTo(center + pointerBaseHalfWidth, pointerTop);
+		ctx.lineTo(center + pointerNeckHalfWidth, pointerNeck);
+		ctx.lineTo(center, pointerBottom);
+		ctx.lineTo(center - pointerNeckHalfWidth, pointerNeck);
 		ctx.closePath();
+		ctx.fillStyle = pointerColor;
 		ctx.fill();
+		ctx.lineWidth = 2;
+		ctx.strokeStyle = pointerStroke;
+		ctx.stroke();
 	};
 
 	const indexFromAngle = (currentAngle: number, length: number) => {

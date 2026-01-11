@@ -23,6 +23,9 @@ export function WinnerModal(props: WinnerModalProps) {
 					<p>{props.winner}</p>
 				</div>
 				<div class="modal-actions">
+					<button type="button" onClick={props.onClose}>
+						Close
+					</button>
 					<button
 						type="button"
 						style={{
@@ -31,10 +34,7 @@ export function WinnerModal(props: WinnerModalProps) {
 						}}
 						onClick={props.onRemove}
 					>
-						Remove name
-					</button>
-					<button type="button" onClick={props.onClose}>
-						Close
+						Remove
 					</button>
 				</div>
 			</div>

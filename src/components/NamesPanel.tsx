@@ -5,7 +5,7 @@ type NamesPanelProps = {
 	onTabChange: (tab: "entries" | "results") => void;
 	onNamesTextChange: (value: string) => void;
 	onSortNames: () => void;
-	onClearNames: () => void;
+	onShuffleNames: () => void;
 };
 
 export function NamesPanel(props: NamesPanelProps) {
@@ -30,11 +30,11 @@ export function NamesPanel(props: NamesPanelProps) {
 			{props.activeTab === "entries" ? (
 				<div class="panel">
 					<div class="panel-actions">
+						<button type="button" onClick={props.onShuffleNames}>
+							Shuffle
+						</button>
 						<button type="button" onClick={props.onSortNames}>
 							Sort names
-						</button>
-						<button type="button" onClick={props.onClearNames}>
-							Clear list
 						</button>
 					</div>
 					<textarea

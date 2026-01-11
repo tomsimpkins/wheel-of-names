@@ -57,7 +57,14 @@ function App() {
 					const sorted = [...names()].sort((a, b) => a.localeCompare(b));
 					setNamesText(sorted.join("\n"));
 				}}
-				onClearNames={() => setNamesText("")}
+				onShuffleNames={() => {
+					const shuffled = [...names()];
+					for (let i = shuffled.length - 1; i > 0; i -= 1) {
+						const j = Math.floor(Math.random() * (i + 1));
+						[shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+					}
+					setNamesText(shuffled.join("\n"));
+				}}
 			/>
 			<Show when={winner()}>
 				{(innerWinner) => (
