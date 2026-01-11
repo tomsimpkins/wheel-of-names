@@ -1,0 +1,241 @@
+#root {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 2rem;
+	text-align: center;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.layout {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 1.5rem;
+	align-items: start;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.column-center {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.wheel-wrapper {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.column-right {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 0.5rem;
+	text-align: left;
+	background: #1b1b1b;
+	color: #f2f2f2;
+	padding: 0.75rem;
+	border-radius: 12px;
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+.tabs {
+	display: flex;
+	gap: 0.5rem;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.tabs button {
+	flex: 1;
+	padding: 0.5rem 0.75rem;
+	border: 1px solid #333;
+	border-radius: 10px 10px 0 0;
+	background: #2a2a2a;
+	color: #f2f2f2;
+	font: 600 14px/1.2 "Trebuchet MS", Arial, sans-serif;
+	cursor: pointer;
+}
+
+.tabs button.active {
+	background: #1f1f1f;
+	border-bottom-color: transparent;
+	color: #fff;
+}
+
+.panel {
+	border: 1px solid #333;
+	border-radius: 0 10px 10px 10px;
+	padding: 0.75rem;
+	background: #1f1f1f;
+	color: #f2f2f2;
+	display: flex;
+	flex-direction: column;
+	min-height: 340px;
+	padding-right: 1rem;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.panel-actions {
+	display: flex;
+	gap: 0.5rem;
+	margin-bottom: 0.75rem;
+}
+
+.panel-actions button {
+	flex: 1;
+	border: 1px solid #333;
+	border-radius: 8px;
+	background: #2a2a2a;
+	color: #f2f2f2;
+	font: 600 13px/1.2 "Trebuchet MS", Arial, sans-serif;
+	padding: 0.45rem 0.6rem;
+	cursor: pointer;
+}
+
+.column-right textarea {
+	resize: vertical;
+	min-height: 0;
+	padding: 0.75rem;
+	border: 1px solid #333;
+	border-radius: 8px;
+	font: 500 14px/1.4 "Trebuchet MS", Arial, sans-serif;
+	color: #f2f2f2;
+	background: #151515;
+	flex: 1;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.results {
+	min-height: 0;
+	flex: 1;
+}
+
+.results ul {
+	margin: 0;
+	padding-left: 1.1rem;
+}
+
+.results p {
+	margin: 0;
+	color: #c9c9c9;
+}
+
+.column-right label {
+	font: 600 14px/1.2 "Trebuchet MS", Arial, sans-serif;
+	color: #f2f2f2;
+	margin-bottom: 0.5rem;
+}
+
+.modal-backdrop {
+	position: fixed;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.7);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10;
+}
+
+.modal {
+	background: #fff;
+	border-radius: 12px;
+	min-width: 280px;
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+	overflow: hidden;
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr;
+	min-height: 240px;
+	color: #111;
+}
+
+.modal-header {
+	display: flex;
+	align-items: center;
+	padding: 1rem 1.25rem;
+	color: #fff;
+}
+
+.modal-header h2 {
+	margin: 0;
+	font-size: 1.1rem;
+}
+
+.modal-body {
+	padding: 1rem 1.25rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 600;
+}
+
+.modal-body p {
+	margin: 0;
+}
+
+.modal-actions {
+	padding: 0.75rem 1rem 1.25rem;
+	display: flex;
+	gap: 0.5rem;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.modal-actions button {
+	border: none;
+	border-radius: 8px;
+	padding: 0.5rem 0.9rem;
+	color: #fff;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.modal-actions button:last-child {
+	background: #333;
+}
+
+.logo {
+	height: 6em;
+	padding: 1.5em;
+	will-change: filter;
+	transition: filter 300ms;
+}
+
+@media (max-width: 720px) {
+	#root {
+		padding: 1rem;
+	}
+
+	.layout {
+		grid-template-columns: 1fr;
+	}
+
+	.layout > :first-child {
+		display: none;
+	}
+
+	.column-right {
+		margin-top: 1rem;
+	}
+}
+.logo:hover {
+	filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.solid:hover {
+	filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+.card {
+	padding: 2em;
+}
+
+.read-the-docs {
+	color: #888;
+}
